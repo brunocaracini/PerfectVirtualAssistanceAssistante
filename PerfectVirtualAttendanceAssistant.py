@@ -47,63 +47,15 @@ def reunionURL():
 
 def menu():
     op = False
-    aux = False
-    while aux == False:
+    while True:
         print('Bienvenido a su asistente de asistencia perfecta')
         print('1 - Reunión sin url')
         print('2 - Reunión con url')
         op = input('Ingrese la opción deseada: ')
         if op == '1':
-            aux = True
+            pass
         elif op == '2':
             os.system('cls')
             reunionURL()
 
-
 menu()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
