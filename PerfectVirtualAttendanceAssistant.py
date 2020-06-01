@@ -20,6 +20,14 @@ def calculaMin(month, day, hora, minutos):
     print(minutes)
     return minutes
 
+def bordered(text):
+    lines = text.splitlines()
+    width = max(len(s) for s in lines)
+    res = ['┌' + '─' * width + '┐']
+    for s in lines:
+        res.append('│' + (s + ' ' * width)[:width] + '│')
+    res.append('└' + '─' * width + '┘')
+    return '\n'.join(res)
 
 def reunionURL():
     global duracion
@@ -63,20 +71,21 @@ def reunionURL():
             target_time = target_time + timedelta(minutes=duracion)  
         while datetime.datetime.now() < target_time:
             os.system('cls')
+            print(bordered(" "*23 + "RESUMEN DE SU CONEXIÓN:" + " "*23))
             print("")
-            print("Lo conectaremos a su clase a las", hora, ":", minutos,"hs. Lo reconectaremos ", n_reconecciones, "veces.")
-            print("")
+            print("- Lo conectaremos a su clase a las " + str(hora) + ":" + str(minutos) + " hs")
+            print("- Lo reconectaremos " + str(n_reconecciones) + " veces cada " + str(duracion + 1) + " minutos")
+            #print("")
             if op == '1':
                 accion = 'se suspenderá su computadora.'
             elif op == '2':
                 accion = 'se apagará su computadora.'
             elif op == '3':
                 accion = 'no se realizará ninguna acción.'
-            print("Una vez finalizada la clase", accion)
+            print("- Una vez finalizada la clase " + accion)
             print("")
-            print("Todo está bajo control. Duerma tranquilo, el descanso es fundamental.")
+            print(bordered("Todo está bajo control. Duerma tranquilo, el descanso es fundamental."))
             time.sleep(10)
-        os.system('cls')
         print('Lo estamos conectando a su clase...')
         time.sleep(5)
         py.press('right')
@@ -91,6 +100,7 @@ def reunionURL():
         #Set audio enter by computer
         py.click(x=714, y=310, clicks=1, interval=0.25)
         i+=1
+        print("Lo hemos conectado la vez N°", str(i) + " de " + str(n_reconecciones) +".")
     if op == '1':
         time.sleep(duracion*60)
         os.system('Rundll32.exe Powrprof.dll,SetSuspendState Sleep')
@@ -99,7 +109,6 @@ def reunionURL():
         os.system('shutdown /s')
     else:
         pass
-
 
 
 def reunionNoURL():
@@ -148,20 +157,21 @@ def reunionNoURL():
             target_time = target_time + timedelta(minutes=duracion)  
         while datetime.datetime.now() < target_time:
             os.system('cls')
+            print(bordered(" "*23 + "RESUMEN DE SU CONEXIÓN:" + " "*23))
             print("")
-            print("Lo conectaremos a su clase a las", hora, ":", minutos,"hs. Lo reconectaremos ", n_reconecciones, "veces.")
-            print("")
+            print("- Lo conectaremos a su clase a las " + str(hora) + ":" + str(minutos) + " hs")
+            print("- Lo reconectaremos " + str(n_reconecciones) + " veces cada " + str(duracion + 1) + " minutos")
+            #print("")
             if op == '1':
                 accion = 'se suspenderá su computadora.'
             elif op == '2':
                 accion = 'se apagará su computadora.'
             elif op == '3':
                 accion = 'no se realizará ninguna acción.'
-            print("Una vez finalizada la clase", accion)
+            print("- Una vez finalizada la clase " + accion)
             print("")
-            print("Todo está bajo control. Duerma tranquilo, el descanso es fundamental.")
+            print(bordered("Todo está bajo control. Duerma tranquilo, el descanso es fundamental."))
             time.sleep(10)
-        os.system('cls')
         print('Lo estamos conectando a su clase...')
         time.sleep(5)
         py.press('up')
@@ -182,6 +192,7 @@ def reunionNoURL():
         #Set audio enter by computer
         py.click(x=714, y=310, clicks=1, interval=0.25)
         i+=1
+        print("Lo hemos conectado la vez N°", str(i) + " de " + str(n_reconecciones) +".")
     if op == '1':
         time.sleep(duracion*60)
         os.system('Rundll32.exe Powrprof.dll,SetSuspendState Sleep')
