@@ -141,7 +141,6 @@ def reunionURL():
     else:
         pass
 
-
 def reunionNoURL():
     global duracion
     
